@@ -1,0 +1,40 @@
+{
+  "tareas": [
+    {
+      "id": "1",
+      "nombre": "Hacer la compra",
+      "categoria": "Personal",
+      "completada": true
+    },
+    {
+      "id": "2",
+      "nombre": "Estudiar Angular",
+      "categoria": "Trabajo",
+      "completada": true
+    },
+    {
+      "id": "3",
+      "nombre": "Paco",
+      "categoria": "Personal",
+      "completada": true
+    },
+    {
+      "id": "4",
+      "nombre": "fdawda",
+      "categoria": "Personal",
+      "completada": false
+    },
+    {
+      "id": "5",
+      "nombre": "DAAWD",
+      "categoria": "Trabajo",
+      "completada": false
+    },
+    {
+      "id": "6",
+      "nombre": "dad",
+      "categoria": "Escuela",
+      "completada": false
+    }
+  ]
+}

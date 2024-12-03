@@ -1,0 +1,49 @@
+<div class="container p-4 bg-dark text-light rounded shadow mt-5">
+  <h2 class="text-center text-primary mb-4">Tareas</h2>
+
+  <!-- Formulario para agregar nueva tarea -->
+  <div class="d-flex flex-wrap justify-content-center">
+    <input type="text" class="form-control input bg-dark text-light border-info mx-2 mb-3" placeholder="Nueva tarea" [(ngModel)]="nuevaTarea" style="max-width: 250px;" />
+    <select class="form-select input bg-dark text-light border-info mx-2 mb-3" [(ngModel)]="categoria" style="max-width: 200px;">
+      <option value="Personal">Personal</option>
+      <option value="Trabajo">Trabajo</option>
+      <option value="Escuela">Escuela</option>
+    </select>
+    <button class="btn submit bg-gradient text-light mx-2 mb-3" (click)="agregarTarea()">Agregar</button>
+  </div>
+
+  <!-- Lista de tareas -->
+  <ul class="list-group">
+    @for (tarea of tareas; track $index) {
+      <li class="list-group-item d-flex justify-content-between align-items-center bg-dark text-light border-info">
+        <div>
+          <input type="checkbox" class="form-check-input me-2" [checked]="tarea.completada" (change)="completarTarea(tarea.id, tarea.completada)" />
+          <strong>{{ tarea.nombre }}</strong> - {{ tarea.categoria }}
+        </div>
+        <div>
+          <button class="btn btn-warning btn-sm mx-1" (click)="editarTarea(tarea)">Modificar</button>
+          <button class="btn btn-danger btn-sm mx-1" (click)="eliminarTarea(tarea.id)">Eliminar</button>
+        </div>
+      </li>
+    }
+  </ul>
+
+  <!-- Formulario para editar tarea -->
+  @if (tareaEditada) {
+    <div class="mt-4">
+      <h3 class="text-primary text-center">Editar Tarea</h3>
+      <div class="d-flex flex-wrap justify-content-center">
+        <input [(ngModel)]="tareaEditada.nombre" class="form-control bg-dark text-light border-info mx-2 mb-3" placeholder="Editar tarea" style="max-width: 250px;" />
+        <select [(ngModel)]="tareaEditada.categoria" class="form-select bg-dark text-light border-info mx-2 mb-3" style="max-width: 200px;">
+          <option value="Personal">Personal</option>
+          <option value="Trabajo">Trabajo</option>
+          <option value="Escuela">Escuela</option>
+        </select>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-success mx-2" (click)="guardarModificaciones()">Guardar cambios</button>
+        <button class="btn btn-secondary mx-2" (click)="tareaEditada = null">Cancelar</button>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,9 @@
+/* Personaliza el estilo de los botones para más espacio entre ellos */
+.navbar-buttons .btn {
+  margin: 0 15px; /* Espacio a los lados de los botones */
+}
+
+/* Centrar todo el contenido dentro de la página */
+.container {
+  min-height: 100vh; /* Asegura que el contenedor ocupe toda la pantalla */
+}

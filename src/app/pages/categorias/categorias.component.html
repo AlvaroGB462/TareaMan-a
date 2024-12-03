@@ -1,0 +1,33 @@
+<div class="container p-4 bg-dark text-light rounded shadow mt-5">
+  <h2 class="text-center text-primary mb-4">Categorías</h2>
+
+  <!-- Mostrar categorías -->
+  <ul class="list-group">
+    @for (categoria of categorias; track $index) {
+      <button class="list-group-item list-group-item-action bg-dark text-info border-info d-flex justify-content-center" (click)="seleccionarCategoria(categoria)">
+        {{ categoria }}
+      </button>
+    }
+  </ul>
+
+  <!-- Mostrar tareas filtradas por categoría -->
+  @if (tareasFiltradas.length > 0) {
+    <div class="mt-4">
+      <h3 class="text-info text-center">Tareas de {{ categoriaSeleccionada }}</h3>
+      <ul class="list-group">
+        @for (tarea of tareasFiltradas; track $index) {
+          <li class="list-group-item d-flex justify-content-between align-items-center bg-dark text-light border-info">
+            <div>
+              <input type="checkbox"
+                     class="form-check-input me-2"
+                     [checked]="tarea.completada"
+                     (change)="completarTarea(tarea.id, tarea.completada)" />
+              <strong>{{ tarea.nombre }}</strong>
+            </div>
+            <button class="btn btn-danger btn-sm" (click)="eliminarTarea(tarea.id)">Eliminar</button>
+          </li>
+        }
+      </ul>
+    </div>
+  }
+</div>
